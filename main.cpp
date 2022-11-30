@@ -206,6 +206,8 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 	int SmallBullet= Novice::LoadTexture("./Resource/SmallBullet.png");
 	int TriangleBullet= Novice::LoadTexture("./Resource/TriangleBullet.png");
 	int STriangleBullet = Novice::LoadTexture("./Resource/STriangleBullet.png");
+	//タイトル
+	int Title = Novice::LoadTexture("./Resource/Title.png");
 	//ブロックサイズ
 	const int BlockSize = 32;
 	//マップの大きさ
@@ -235,27 +237,50 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
 	};
 
-	int map1[MapSizeY][MapSizeX+40] = {
-{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
-{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,2},
-{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,2},
-{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,2},
-{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,2},
-{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,2},
-{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,2},
-{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,2},
-{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,2},
-{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,2},
-{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,2},
-{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,2},
-{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,2},
-{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,2},
-{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,2},
-{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2.2},
-{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2.2},
-{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2.2},
-{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,2},
-{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
+	int map1[MapSizeY][MapSizeX] = {
+{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
+{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2},
+{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2},
+{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2},
+{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2},
+{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2},
+{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2},
+{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2},
+{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2},
+{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2},
+{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2},
+{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2},
+{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2},
+{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2},
+{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2},
+{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2},
+{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2},
+{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2},
+{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2},
+{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
+	};
+
+	int map2[MapSizeY][MapSizeX] = {
+{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
+{2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2},
+{2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2},
+{2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2},
+{2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2},
+{2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2},
+{2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2},
+{2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2},
+{2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2},
+{2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2},
+{2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2},
+{2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2},
+{2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2},
+{2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2},
+{2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2},
+{2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2},
+{2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2},
+{2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2},
+{2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2},
+{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
 	};
 	enum Map {
 		none,
@@ -351,11 +376,10 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 	int InvincibleTimer = 0;
 	int InvincibleFlag = 0;
 	int Damage = 0/*ダメージ*/;
-	int PlayerHP = 10000;
+	int PlayerHP = 13;
 
-	int Scroll = 0;
-	int MonitorX = 0;
 	int StartFlag = 0;
+	int BossAttackCount = 0;
 
 	//アニメーションフレーム
 	enum Flag {
@@ -443,7 +467,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 				Boss.Pos.X = 1130;
 				Boss.Pos.Y = -80;
 				Boss.Move = 2;
-				Boss.HP = 10000;
+				Boss.HP = 13;
 				StartFlag = 1;
 			}
 		}
@@ -457,7 +481,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 			}
 		}
 
-		if (scene == 1) {
+		if (scene == 1 || scene == 2) {
 			//フェードアウト
 			if (StartFlag == 2) {
 				AColor += 0xFFFFFFFF;
@@ -465,7 +489,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 					StartFlag = 0;
 				}
 			}
-			MonitorX = Player.Pos.X  - Scroll;
+			
 			if (keys[DIK_LEFT]) {
 				PlayerTmp.Speed.X = 4;
 				PlayerAnimeFlag = Left;
@@ -494,15 +518,6 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 				else {
 					if (map1[(int)PlayerTmp.QuadBlock.LT.Y][(int)PlayerTmp.QuadBlock.LT.X] == none && map1[(int)PlayerTmp.QuadBlock.LB.Y][(int)PlayerTmp.QuadBlock.LB.X] == none) {
 						Player.Speed.X = 4;
-						
-						if (Player.Pos.X <= 2240) {
-							
-							Scroll -= Player.Speed.X;
-						}
-						if (Scroll <= 0) {
-							
-							Scroll += Player.Speed.X;
-						}
 					}
 				}
 
@@ -517,28 +532,34 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 				else {
 					if (map1[(int)PlayerTmp.QuadBlock.RT.Y][(int)PlayerTmp.QuadBlock.RT.X] == none && map1[(int)PlayerTmp.QuadBlock.RB.Y][(int)PlayerTmp.QuadBlock.RB.X] == none) {
 						Player.Speed.X = 4;
-						
-						if (Scroll >= 1200) {
-							Scroll -= Player.Speed.X;
-							
-						}
-						if (Player.Pos.X >= 400) {
-							Scroll += Player.Speed.X;
-							
-						}
 					}
 				}
 			}
-
-			if (map1[(int)PlayerTmp.QuadBlock.RT.Y][(int)PlayerTmp.QuadBlock.RT.X] == 2 && map1[(int)PlayerTmp.QuadBlock.RB.Y][(int)PlayerTmp.QuadBlock.RB.X] == 2) {
-				StartFlag = 1;
+			
+			if (scene == 2) {
+				if (map2[(int)PlayerTmp.QuadBlock.LT.Y][(int)PlayerTmp.QuadBlock.LT.X] == 2 && map2[(int)PlayerTmp.QuadBlock.LB.Y][(int)PlayerTmp.QuadBlock.LB.X] == 2) {
+					scene = 1;
+					Player.Pos.X = 1150;
+					Player.Pos.Y = 576;
+				}
+				if (map2[(int)PlayerTmp.QuadBlock.RT.Y][(int)PlayerTmp.QuadBlock.RT.X + 1] == 2 && map2[(int)PlayerTmp.QuadBlock.RB.Y][(int)PlayerTmp.QuadBlock.RB.X + 1] == 2) {
+					StartFlag = 1;
+				}
+			}
+			
+			if (scene == 1) {
+				if (map1[(int)PlayerTmp.QuadBlock.RT.Y][(int)PlayerTmp.QuadBlock.RT.X] == 2 && map1[(int)PlayerTmp.QuadBlock.RB.Y][(int)PlayerTmp.QuadBlock.RB.X] == 2) {
+					scene = 2;
+					Player.Pos.X = 96;
+					Player.Pos.Y = 576;
+				}
 			}
 
 			//フェードイン
 			if (StartFlag == 1) {
 				AColor -= 0xFFFFFFFF;
 				if (AColor == BLACK) {
-					scene = 2;
+					scene = 3;
 					StartFlag = 2;
 					Player.Pos.X = 96;
 					Player.Pos.Y = 576;
@@ -582,7 +603,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 				AttackFlag = 1;
 				PlayerAttackFreme = 0;
 				PlayerAttackAnime = 0;
-				EffectPos.X = Player.Pos.X + 16-Scroll;
+				EffectPos.X = Player.Pos.X + 16;
 				EffectPos.Y = Player.Pos.Y - 32;
 			}
 			if (AttackEffectFlag == 1) {
@@ -607,7 +628,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 		}
 
 		//仮変数
-		if (scene == 2) {
+		if (scene == 3) {
 		
 			//フェードアウト
 			if (StartFlag == 2) {
@@ -1809,6 +1830,17 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 					-100,-100
 				};
 			}
+
+			//ゲームオーバー
+			if (PlayerHP == 0) {
+				scene = 4;
+			}
+
+			//ゲームクリア
+			if (Boss.HP == 0) {
+				scene = 5;
+			}
+
 			//ここまで-------------------------
 
 
@@ -1822,10 +1854,10 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 		///
 
 		//背景の描画
-		if (scene == 1) {
-			Novice::DrawSprite(0 + WorldRandX-Scroll , 0 - WorldRandY, GLBack1, 1, 1, 0.0f, WHITE);
+		if (scene == 1 || scene == 2) {
+			Novice::DrawSprite(0 + WorldRandX, 0 - WorldRandY, GLBack1, 1, 1, 0.0f, WHITE);
 		}
-		if (scene == 2) {
+		if (scene == 3) {
 			Novice::DrawSprite(-20 + WorldRandX, -20 - WorldRandY, GLBack, 1, 1, 0.0f, WHITE);
 		}
 		//レーザー
@@ -1846,15 +1878,24 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 		}
 		if (scene == 1) {
 			for (int y = 0; y < MapSizeY; y++) {
-				for (int x = 0; x < MapSizeX+40; x++) {
+				for (int x = 0; x < MapSizeX; x++) {
 					if (map1[y][x] == Block) {
-						Novice::DrawSprite(x * BlockSize + WorldRandX-Scroll, y * BlockSize - WorldRandY, GLblock, 1, 1, 0.0f, WHITE);
+						Novice::DrawSprite(x * BlockSize + WorldRandX, y * BlockSize - WorldRandY, GLblock, 1, 1, 0.0f, WHITE);
+					}
+				}
+			}
+		}
+		if (scene == 2) {
+			for (int y = 0; y < MapSizeY; y++) {
+				for (int x = 0; x < MapSizeX ; x++) {
+					if (map2[y][x] == Block) {
+						Novice::DrawSprite(x * BlockSize + WorldRandX, y * BlockSize - WorldRandY, GLblock, 1, 1, 0.0f, WHITE);
 					}
 				}
 			}
 		}
 		//ブロックの描画
-		if (scene == 2) {
+		if (scene == 3) {
 			for (int y = 0; y < MapSizeY; y++) {
 				for (int x = 0; x < MapSizeX; x++) {
 					if (map[y][x] == Block) {
@@ -1907,78 +1948,9 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 			}
 		}
 		//-敵の攻撃３描画処理ここまで-----
-		if (scene == 1) {
-			//プレイヤーの描画
-			if (InvincibleFlag == 1 || InvincibleFlag == 2 || InvincibleFlag == 0) {
-				if (keys[DIK_LEFT] != 0 && PlayerAnimeFlag == Left) {
-					if (JanpAir == 1 && Velocity > 0) {
-						Novice::DrawSpriteRect(Player.Pos.X - Player.Radius - PlayerRandX, Player.Pos.Y - Player.Radius - PlayerRandY, PlayerJunpAirAnime * 64, 0, 64, 64, GLplayerJumpAirL, 1 / 5.0f, 1, 0.0f, WHITE);
-					}
-					else if (JanpFlag == 1 && Velocity > 0) {
-						Novice::DrawSpriteRect(Player.Pos.X - Player.Radius - PlayerRandX, Player.Pos.Y - Player.Radius - PlayerRandY, 0, 0, 64, 64, GLplayerJumpL, 1, 1, 0.0f, WHITE);
-					}
-					else if (Velocity < 0) {
-						Novice::DrawSpriteRect(Player.Pos.X - Player.Radius - PlayerRandX, Player.Pos.Y - Player.Radius - PlayerRandY, 0, 0, 64, 64, GLplayerFallL, 1, 1, 0.0f, WHITE);
-					}
-					else if (AttackFlag == 1) {
-						Novice::DrawSpriteRect(Player.Pos.X - Player.Radius, Player.Pos.Y - Player.Radius - PlayerRandY, PlayerAttackAnime * 72, 0, 64, 64, GLplayerAttackL, 1 / 4.0f, 1, 0.0f, WHITE);
-					}
-					else {
-						Novice::DrawSpriteRect(Player.Pos.X - Player.Radius, Player.Pos.Y - Player.Radius - PlayerRandY, PlayerRunAnime * (BlockSize * 2), 0, 64, 64, GLplayerRunL, 1 / 6.0f, 1, 0.0f, WHITE);
-					}
-				}
-				else if (keys[DIK_RIGHT] != 0 && PlayerAnimeFlag == Right) {
-					if (JanpAir == 1 && Velocity > 0) {
-						Novice::DrawSpriteRect(Player.Pos.X - Player.Radius - PlayerRandX, Player.Pos.Y - Player.Radius - PlayerRandY, PlayerJunpAirAnime * 64, 0, 64, 64, GLplayerJumpAirR, 1 / 5.0f, 1, 0.0f, WHITE);
-					}
-					else if (JanpFlag == 1 && Velocity > 0) {
-						Novice::DrawSpriteRect(Player.Pos.X - Player.Radius - PlayerRandX, Player.Pos.Y - Player.Radius - PlayerRandY, 0, 0, 64, 64, GLplayerJumpR, 1, 1, 0.0f, WHITE);
-					}
-					else if (Velocity < 0) {
-						Novice::DrawSpriteRect(Player.Pos.X - Player.Radius - PlayerRandX, Player.Pos.Y - Player.Radius - PlayerRandY, 0, 0, 64, 64, GLplayerFallR, 1, 1, 0.0f, WHITE);
-					}
-					else if (AttackFlag == 1) {
-						Novice::DrawSpriteRect(Player.Pos.X - Player.Radius - PlayerRandX, Player.Pos.Y - Player.Radius - PlayerRandY, PlayerAttackAnime * 72, 0, 64, 64, GLplayerAttackR, 1 / 4.0f, 1, 0.0f, WHITE);
-					}
-					else {
-						Novice::DrawSpriteRect(Player.Pos.X - Player.Radius - PlayerRandX, Player.Pos.Y - Player.Radius - PlayerRandY, PlayerRunAnime * (BlockSize * 2), 0, 64, 64, GLplayerRunR, 1 / 6.0f, 1, 0.0f, WHITE);
-					}
-				}
-				else {
-					if (PlayerAnimeFlag == Left) {
-						if (JanpFlag == 1 && Velocity > 0) {
-							Novice::DrawSpriteRect(Player.Pos.X - Player.Radius - PlayerRandX, Player.Pos.Y - Player.Radius - PlayerRandY, 0, 0, 64, 64, GLplayerJumpL, 1, 1, 0.0f, WHITE);
-						}
-						else if (Velocity < 0) {
-							Novice::DrawSpriteRect(Player.Pos.X - Player.Radius - PlayerRandX, Player.Pos.Y - Player.Radius - PlayerRandY, 0, 0, 64, 64, GLplayerFallL, 1, 1, 0.0f, WHITE);
-						}
-						else if (AttackFlag == 1) {
-							Novice::DrawSpriteRect(Player.Pos.X - Player.Radius - PlayerRandX, Player.Pos.Y - Player.Radius - PlayerRandY, PlayerAttackAnime * 72, 0, 64, 64, GLplayerAttackL, 1 / 4.0f, 1, 0.0f, WHITE);
-						}
-						else {
-							Novice::DrawSpriteRect(Player.Pos.X - Player.Radius - PlayerRandX, Player.Pos.Y - Player.Radius - PlayerRandY, PlayerStayAnime * (BlockSize * 2), 0, 64, 64, GLplayerStayL, 1 / 5.0f, 1, 0.0f, WHITE);
-						}
-					}
-					else if (PlayerAnimeFlag == Right) {
-						if (JanpFlag == 1 && Velocity > 0) {
-							Novice::DrawSpriteRect(Player.Pos.X - Player.Radius - PlayerRandX, Player.Pos.Y - Player.Radius - PlayerRandY, 0, 0, 64, 64, GLplayerJumpR, 1, 1, 0.0f, WHITE);
-						}
-						else if (Velocity < 0) {
-							Novice::DrawSpriteRect(Player.Pos.X - Player.Radius - PlayerRandX, Player.Pos.Y - Player.Radius - PlayerRandY, 0, 0, 64, 64, GLplayerFallR, 1, 1, 0.0f, WHITE);
-						}
-						else if (AttackFlag == 1) {
-							Novice::DrawSpriteRect(Player.Pos.X - Player.Radius - PlayerRandX, Player.Pos.Y - Player.Radius - PlayerRandY, PlayerAttackAnime * 72, 0, 64, 64, GLplayerAttackR, 1 / 4.0f, 1, 0.0f, WHITE);
-						}
-						else {
-							Novice::DrawSpriteRect(Player.Pos.X - Player.Radius - PlayerRandX, Player.Pos.Y - Player.Radius - PlayerRandY, PlayerStayAnime * (BlockSize * 2), 0, 64, 64, GLplayerStayR, 1 / 5.0f, 1, 0.0f, WHITE);
-						}
-					}
-				}
-			}
-
-		}
 		
-		if (scene == 2) {
+		
+		
 			//プレイヤーの描画
 			if (InvincibleFlag == 1 || InvincibleFlag == 2 || InvincibleFlag == 0) {
 				if (keys[DIK_LEFT] != 0 && PlayerAnimeFlag == Left) {
@@ -2045,11 +2017,13 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 						}
 					}
 				}
-			}
-			//プレイヤーのHP
-			Novice::DrawSpriteRect(80, 20, 32 * (13 - PlayerHP), 0, 32, 128, GLPlayerHP, 1 / 14.0f, 1, 0.0f, WHITE);
-			//敵のHP
-			Novice::DrawSpriteRect(112, 20, 32 * (13 - Boss.HP), 0, 32, 128, GLEnemyHP, 1 / 14.0f, 1, 0.0f, WHITE);
+			
+				if (scene == 3) {
+					//プレイヤーのHP
+					Novice::DrawSpriteRect(80, 20, 32 * (13 - PlayerHP), 0, 32, 128, GLPlayerHP, 1 / 14.0f, 1, 0.0f, WHITE);
+					//敵のHP
+					Novice::DrawSpriteRect(112, 20, 32 * (13 - Boss.HP), 0, 32, 128, GLEnemyHP, 1 / 14.0f, 1, 0.0f, WHITE);
+				}
 		}
 
 		//デバッグ用
@@ -2062,7 +2036,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 		Novice::DrawLine(PlayerTmp.Quad.RB.X, PlayerTmp.Quad.RB.Y, PlayerTmp.Quad.RT.X, PlayerTmp.Quad.RT.Y, RED);
 		Novice::DrawLine(PlayerTmp.Quad.RT.X, PlayerTmp.Quad.RT.Y, PlayerTmp.Quad.LT.X, PlayerTmp.Quad.LT.Y, RED);
 
-		//ジャンプ系
+		/*//ジャンプ系
 		Novice::ScreenPrintf(64, 64, "Velocity = %f", Velocity);
 		Novice::ScreenPrintf(64, 92, "JanpFlag = %d", JanpFlag);
 		Novice::ScreenPrintf(64, 128, "JanpAir = %d", JanpAir);
@@ -2078,8 +2052,11 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 		Novice::ScreenPrintf(64, 422, "LaserRadiusY = %d", Boss.LaserRadiusY[0]);
 		Novice::ScreenPrintf(64, 442, "BossHP = %d", Boss.HP);
 		Novice::ScreenPrintf(64, 462, "PlayerHP = %d", PlayerHP);
-		Novice::ScreenPrintf(64, 482, "Laserflag = %d", Boss.RainLaserFlag);
+		Novice::ScreenPrintf(64, 482, "Laserflag = %d", Boss.RainLaserFlag);*/
 		Novice::DrawEllipse(EffectPos.X,EffectPos.Y,16,16,0.0f,RED,kFillModeSolid);
+		if (scene == 0) {
+			Novice::DrawSprite(0, 0, Title, 1, 1, 0.0f, WHITE);
+		}
 		Novice::DrawBox(0, 0, 1280, 720, 0.0f, AColor, kFillModeSolid);
 		///
 		/// ↑描画処理ここまで
