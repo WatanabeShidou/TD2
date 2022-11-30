@@ -420,6 +420,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 
 	//音
 	int BGM = Novice::LoadAudio("./Resource/BGM.mp3");
+	int BGMFlag = -1;
 
 	// キー入力結果を受け取る箱
 	char keys[256] = { 0 };
@@ -2039,13 +2040,12 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 					Novice::DrawSpriteRect(112, 20, 32 * (13 - Boss.HP), 0, 32, 128, GLEnemyHP, 1 / 14.0f, 1, 0.0f, WHITE);
 				}
 		}
-
 			//サウンド
-			/*if (scene == 3) {
-				if () {
-					Novice::PlayAudio(BGM, 1, 1);
+			if (scene == 3) {
+				if (!Novice::IsPlayingAudio(BGM) || Novice::IsPlayingAudio(BGM) == -1) {
+					BGMFlag = Novice::PlayAudio(BGM, 1, 0.1f);
 				}
-			}*/
+			}
 
 		//デバッグ用
 		Novice::DrawLine(Player.QuadBlock.LT.X, Player.QuadBlock.LT.Y, Player.QuadBlock.LB.X, Player.QuadBlock.LB.Y, RED);
