@@ -186,7 +186,8 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 	int GLplayerJumpAirL = Novice::LoadTexture("./Resource/playerJumpAirL.png");
 	int GLplayerFallL = Novice::LoadTexture("./Resource/playerFallL.png");
 	int GLplayerFallR = Novice::LoadTexture("./Resource/playerFallR.png");
-	
+	//チュートリアル
+	int GLTutorial = Novice::LoadTexture("./Resource/tutorial.png");
 	//プレイヤーの攻撃
 	int GLplayerAttackEffectR = Novice::LoadTexture("./Resource/AttackwaveR.png");
 	int GLplayerAttackEffectL = Novice::LoadTexture("./Resource/AttackwaveL.png");
@@ -395,6 +396,9 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 	int PlayerAnimeFlag = 1;
 	int PlayerJunpAirFreme = 0;
 	int PlayerJunpAirAnime = 0;
+	//チュートリアル
+	int tutorialAnime = 0;
+	int tutorialFreme = 0;
 	//攻撃用変数
 	int PlayerAttackFreme = 0;
 	int PlayerAttackAnime = 0;
@@ -593,6 +597,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 			FrameCount(EnemyStayFrame, EnemyStayAnime, 10, 50);
 			FrameCount(PlayerAttackFreme, PlayerAttackAnime, 4, 16);
 			FrameCount(AttackEffectFreme, AttackEffectAnime, 2, 14);
+			FrameCount(tutorialFreme,tutorialAnime,8,152);
 			if (AttackFlag == 1) {
 				AttackCount++;
 			}
@@ -604,8 +609,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 				AttackFlag = 1;
 				PlayerAttackFreme = 0;
 				PlayerAttackAnime = 0;
-				EffectPos.X = Player.Pos.X + 16;
-				EffectPos.Y = Player.Pos.Y - 32;
+				
 			}
 			if (AttackEffectFlag == 1) {
 				AttackEffectCount++;
@@ -619,6 +623,8 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 				AttackEffectAnime = 0;
 				AttackEffectFreme = 0;
 				AttackEffectCount = 0;
+				EffectPos.X = Player.Pos.X;
+				EffectPos.Y = Player.Pos.Y;
 				if (PlayerAnimeFlag == Left) {
 					EffectMove = -10;
 				}
@@ -1853,10 +1859,11 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 		///
 		/// ↓描画処理ここから
 		///
-
+		
 		//背景の描画
 		if (scene == 1 || scene == 2) {
 			Novice::DrawSprite(0 + WorldRandX, 0 - WorldRandY, GLBack1, 1, 1, 0.0f, WHITE);
+			Novice::DrawSpriteRect(555,120,tutorialAnime*170,0,170,64,GLTutorial,1/19.0f,1,0.0f,WHITE);
 		}
 		if (scene == 3) {
 			Novice::DrawSprite(-20 + WorldRandX, -20 - WorldRandY, GLBack, 1, 1, 0.0f, WHITE);
