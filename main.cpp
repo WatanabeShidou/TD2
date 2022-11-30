@@ -186,6 +186,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 	int GLplayerJumpAirL = Novice::LoadTexture("./Resource/playerJumpAirL.png");
 	int GLplayerFallL = Novice::LoadTexture("./Resource/playerFallL.png");
 	int GLplayerFallR = Novice::LoadTexture("./Resource/playerFallR.png");
+	
 	//プレイヤーの攻撃
 	int GLplayerAttackEffectR = Novice::LoadTexture("./Resource/AttackwaveR.png");
 	int GLplayerAttackEffectL = Novice::LoadTexture("./Resource/AttackwaveL.png");
@@ -2058,6 +2059,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 			Novice::DrawSprite(0, 0, Title, 1, 1, 0.0f, WHITE);
 		}
 		Novice::DrawBox(0, 0, 1280, 720, 0.0f, AColor, kFillModeSolid);
+		Novice::DrawSprite(0, 0, setumei, 1, 1, 0.0f, WHITE);
 		///
 		/// ↑描画処理ここまで
 		///
