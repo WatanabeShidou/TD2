@@ -2059,7 +2059,6 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 			Novice::DrawSprite(0, 0, Title, 1, 1, 0.0f, WHITE);
 		}
 		Novice::DrawBox(0, 0, 1280, 720, 0.0f, AColor, kFillModeSolid);
-		Novice::DrawSprite(0, 0, setumei, 1, 1, 0.0f, WHITE);
 		///
 		/// ↑描画処理ここまで
 		///
