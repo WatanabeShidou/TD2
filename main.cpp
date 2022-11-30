@@ -212,6 +212,8 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 	int STriangleBullet = Novice::LoadTexture("./Resource/STriangleBullet.png");
 	//タイトル
 	int Title = Novice::LoadTexture("./Resource/Title.png");
+	int over = Novice::LoadTexture("./Resource/over.png");
+	int clear = Novice::LoadTexture("./Resource/clear.png");
 	//ブロックサイズ
 	const int BlockSize = 32;
 	//マップの大きさ
@@ -1846,10 +1848,21 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 			if (PlayerHP == 0) {
 				scene = 4;
 			}
+			if (scene == 4) {
+				if (keys[DIK_C]) {
+					scene = 0;
+				}
+			}
+
 
 			//ゲームクリア
 			if (Boss.HP == 0) {
 				scene = 5;
+			}
+			if (scene == 5) {
+				if (keys[DIK_C]) {
+					scene = 0;
+				}
 			}
 
 			//ここまで-------------------------
@@ -2048,14 +2061,14 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 			}
 
 		//デバッグ用
-		Novice::DrawLine(Player.QuadBlock.LT.X, Player.QuadBlock.LT.Y, Player.QuadBlock.LB.X, Player.QuadBlock.LB.Y, RED);
+		/*Novice::DrawLine(Player.QuadBlock.LT.X, Player.QuadBlock.LT.Y, Player.QuadBlock.LB.X, Player.QuadBlock.LB.Y, RED);
 		Novice::DrawLine(Player.QuadBlock.LB.X, Player.QuadBlock.LB.Y, Player.QuadBlock.RB.X, Player.QuadBlock.RB.Y, RED);
 		Novice::DrawLine(Player.QuadBlock.RB.X, Player.QuadBlock.RB.Y, Player.QuadBlock.RT.X, Player.QuadBlock.RT.Y, RED);
 		Novice::DrawLine(Player.QuadBlock.RT.X, Player.QuadBlock.RT.Y, Player.QuadBlock.LT.X, Player.QuadBlock.LT.Y, RED);
 		Novice::DrawLine(PlayerTmp.Quad.LT.X, PlayerTmp.Quad.LT.Y, PlayerTmp.Quad.LB.X, PlayerTmp.Quad.LB.Y, RED);
 		Novice::DrawLine(PlayerTmp.Quad.LB.X, PlayerTmp.Quad.LB.Y, PlayerTmp.Quad.RB.X, PlayerTmp.Quad.RB.Y, RED);
 		Novice::DrawLine(PlayerTmp.Quad.RB.X, PlayerTmp.Quad.RB.Y, PlayerTmp.Quad.RT.X, PlayerTmp.Quad.RT.Y, RED);
-		Novice::DrawLine(PlayerTmp.Quad.RT.X, PlayerTmp.Quad.RT.Y, PlayerTmp.Quad.LT.X, PlayerTmp.Quad.LT.Y, RED);
+		Novice::DrawLine(PlayerTmp.Quad.RT.X, PlayerTmp.Quad.RT.Y, PlayerTmp.Quad.LT.X, PlayerTmp.Quad.LT.Y, RED);*/
 
 		/*//ジャンプ系
 		Novice::ScreenPrintf(64, 64, "Velocity = %f", Velocity);
@@ -2074,11 +2087,17 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 		Novice::ScreenPrintf(64, 442, "BossHP = %d", Boss.HP);
 		Novice::ScreenPrintf(64, 462, "PlayerHP = %d", PlayerHP);
 		Novice::ScreenPrintf(64, 482, "Laserflag = %d", Boss.RainLaserFlag);*/
-		Novice::DrawEllipse(EffectPos.X,EffectPos.Y,16,16,0.0f,RED,kFillModeSolid);
+		
 		if (scene == 0) {
 			Novice::DrawSprite(0, 0, Title, 1, 1, 0.0f, WHITE);
 		}
 		Novice::DrawBox(0, 0, 1280, 720, 0.0f, AColor, kFillModeSolid);
+		if (scene == 4) {
+			Novice::DrawSprite(290, 200, clear, 2, 2, 0.0f, WHITE);
+		}
+		if (scene == 5) {
+			Novice::DrawSprite(290, 200, over, 2, 2, 0.0f, WHITE);
+		}
 		///
 		/// ↑描画処理ここまで
 		///
