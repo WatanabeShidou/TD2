@@ -186,6 +186,8 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 	int GLplayerJumpAirL = Novice::LoadTexture("./Resource/playerJumpAirL.png");
 	int GLplayerFallL = Novice::LoadTexture("./Resource/playerFallL.png");
 	int GLplayerFallR = Novice::LoadTexture("./Resource/playerFallR.png");
+	int PlayerJAirShadowL = Novice::LoadTexture("./Resource/playerJumpAirShadowL.png");
+	int PlayerJAirShadowR = Novice::LoadTexture("./Resource/playerJumpAirShadowR.png");
 	//チュートリアル
 	int GLTutorial = Novice::LoadTexture("./Resource/tutorial.png");
 	//プレイヤーの攻撃
@@ -413,10 +415,11 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 	int EffectMove = 10;
 	int AttackHitFlag = 0;
 
-
 	int EnemyStayFrame = 0;
 	int EnemyStayAnime = 0;
 
+	//音
+	int BGM = Novice::LoadAudio("./Resource/BGM.mp3");
 
 	// キー入力結果を受け取る箱
 	char keys[256] = { 0 };
@@ -636,7 +639,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 
 		//仮変数
 		if (scene == 3) {
-		
+			
 			//フェードアウト
 			if (StartFlag == 2) {
 				AColor += 0xFFFFFFFF;
@@ -1863,6 +1866,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 		//背景の描画
 		if (scene == 1 || scene == 2) {
 			Novice::DrawSprite(0 + WorldRandX, 0 - WorldRandY, GLBack1, 1, 1, 0.0f, WHITE);
+			//チュートリアル
 			Novice::DrawSpriteRect(555,120,tutorialAnime*170,0,170,64,GLTutorial,1/19.0f,1,0.0f,WHITE);
 		}
 		if (scene == 3) {
@@ -1963,6 +1967,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 			if (InvincibleFlag == 1 || InvincibleFlag == 2 || InvincibleFlag == 0) {
 				if (keys[DIK_LEFT] != 0 && PlayerAnimeFlag == Left) {
 					if (JanpAir == 1 && Velocity > 0) {
+						Novice::DrawSprite(Player.Pos.X - Player.Radius - PlayerRandX+10, Player.Pos.Y - Player.Radius - PlayerRandY,PlayerJAirShadowL,1,1,0.0f,WHITE);
 						Novice::DrawSpriteRect(Player.Pos.X - Player.Radius - PlayerRandX, Player.Pos.Y - Player.Radius - PlayerRandY, PlayerJunpAirAnime * 64, 0, 64, 64, GLplayerJumpAirL, 1 / 5.0f, 1, 0.0f, WHITE);
 					}
 					else if (JanpFlag == 1 && Velocity > 0) {
@@ -1980,6 +1985,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 				}
 				else if (keys[DIK_RIGHT] != 0 && PlayerAnimeFlag == Right) {
 					if (JanpAir == 1 && Velocity > 0) {
+						Novice::DrawSprite(Player.Pos.X - Player.Radius - PlayerRandX - 10, Player.Pos.Y - Player.Radius - PlayerRandY, PlayerJAirShadowR, 1, 1, 0.0f, WHITE);
 						Novice::DrawSpriteRect(Player.Pos.X - Player.Radius - PlayerRandX, Player.Pos.Y - Player.Radius - PlayerRandY, PlayerJunpAirAnime * 64, 0, 64, 64, GLplayerJumpAirR, 1 / 5.0f, 1, 0.0f, WHITE);
 					}
 					else if (JanpFlag == 1 && Velocity > 0) {
@@ -2033,6 +2039,13 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 					Novice::DrawSpriteRect(112, 20, 32 * (13 - Boss.HP), 0, 32, 128, GLEnemyHP, 1 / 14.0f, 1, 0.0f, WHITE);
 				}
 		}
+
+			//サウンド
+			/*if (scene == 3) {
+				if () {
+					Novice::PlayAudio(BGM, 1, 1);
+				}
+			}*/
 
 		//デバッグ用
 		Novice::DrawLine(Player.QuadBlock.LT.X, Player.QuadBlock.LT.Y, Player.QuadBlock.LB.X, Player.QuadBlock.LB.Y, RED);
